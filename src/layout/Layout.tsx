@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom"; //para mostrar children
+import { Outlet } from "react-router-dom";
 import { TheFooter, TheHeader } from "src/components";
 
 export const Layout = () => {
