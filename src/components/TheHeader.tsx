@@ -1,6 +1,12 @@
-
-export const TheHeader = () => {
+const TheHeader = () => {
   return (
-    <header className='bg-gray-200'>The Header</header>
-  )
-}
+    <header className="text-primary bg-primary sticky top-0 text-2xl ">
+      <div className="mx-auto container flex justify-between p-6">
+        <div>Logo</div>
+        <div>Select</div>
+      </div>
+    </header>
+  );
+};
+
+export default TheHeader;
