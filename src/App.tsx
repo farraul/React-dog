@@ -1,15 +1,8 @@
-
-import './App.css'
-import { TheHeader } from './components/TheHeader'
+import "./App.css";
+import RouterProvider from "./router/RouterProvider";
 
 function App() {
-
-  return (
-    <>
-    <TheHeader/>
-      hi
-    </>
-  )
+  return <RouterProvider />;
 }
 
-export default App
+export default App;
