@@ -13,10 +13,15 @@ yarn dev
 
 git flow init
 
-### Create feature branch
+### Create/close feature branch
 
 git flow feature start crate-main-page
+git flow feauture finish
+
+- git stash: if have changes but we dont want to commit them to the current branch
+- git stash pop: we recover the files
 
 ### Prefix src/
+
 We need to install the package:
 @types/node
