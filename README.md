@@ -5,3 +5,10 @@
 ### Run project
 yarn dev
 
+## Git branching using Gitflow
+
+### Create develop branch 
+git flow init
+
+### Create feature branch 
+git flow feature start crate-main-page
