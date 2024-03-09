@@ -16,7 +16,7 @@ git flow init
 ### Create/close feature branch
 
 git flow feature start crate-main-page
-git flow feauture finish
+git flow feature finish
 
 - git stash: if have changes but we dont want to commit them to the current branch
 - git stash pop: we recover the files
