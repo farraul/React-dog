@@ -5,7 +5,7 @@ export const Layout = () => {
   return (
     <>
       <TheHeader />
-      <main className="container mx-auto flex-grow">
+      <main>
         <Outlet />
       </main>
       <TheFooter />
