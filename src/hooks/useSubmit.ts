@@ -3,18 +3,18 @@ import { useState } from "react";
 import { optionToast } from "src/utils/toast";
 
 interface UseSubmitProps<T, U> {
-  data: T;
   callback: (data: T) => Promise<U>;
+  param: T;
 }
 
 const useSubmit = <T, U>() => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async ({ data, callback }: UseSubmitProps<T, U>) => {
+  const handleSubmit = async ({ callback, param }: UseSubmitProps<T, U>) => {
     try {
       setIsLoading(true);
-      const result = await callback(data);
+      const result = await callback(param);
       toast.success("Se ha realizado la peticion con éxito", optionToast);
       return result;
     } catch (error) {

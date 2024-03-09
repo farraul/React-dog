@@ -9,24 +9,22 @@ interface Props {
 }
 
 const BreedsSelect = ({ setBreedSelected }: Props) => {
-  const [breeds, setBreeds] = useState({});
+  const [breeds, setBreeds] = useState<DogBreeds>({});
   const [subBreeds, setSubBreeds] = useState([""]);
   const [shouldRenderSelect, setShouldRenderSelect] = useState(false);
   const [mainBreed, setMainBreed] = useState("");
   const { getNameBreeds } = breedsService();
 
-  const { handleSubmit, isLoading, error } = useSubmit<
-    undefined,
-    DogBreeds[]
-  >();
+  const { handleSubmit, isLoading, error } = useSubmit<undefined, DogBreeds>();
 
   const getdata = async () => {
     const nameDogs = await handleSubmit({
-      data: undefined,
+      param: undefined,
       callback: getNameBreeds,
     });
     if (error) return;
     if (nameDogs) setBreeds(nameDogs);
+    return nameDogs;
   };
 
   useQuery({
@@ -69,7 +67,7 @@ const BreedsSelect = ({ setBreedSelected }: Props) => {
         <option value="" disabled>
           Raza
         </option>
-        {getOptions().map((breed) => (
+        {getOptions()?.map((breed) => (
           <option value={breed} key={breed}>
             {breed}
           </option>
