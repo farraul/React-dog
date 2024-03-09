@@ -1,18 +1,28 @@
 import { useState } from "react";
 
-export const BreedsSelect = ({ breeds, setBreedSelected }: any) => {
+interface DogBreeds {
+  [breed: string]: string[];
+}
+interface Props {
+  breeds: DogBreeds;
+  setBreedSelected: (Breed: string) => void;
+}
+
+export const BreedsSelect = ({ breeds, setBreedSelected }: Props) => {
+  console.log("breeds:::", breeds);
+
   const [subBreeds, setSubBreeds] = useState([""]);
   const [shouldRenderSelect, setShouldRenderSelect] = useState(false);
   const [mainBreed, setMainBreed] = useState("");
 
   const getOptions = () => {
-    return ["Select", ...Object.entries(breeds).map((x) => x[0])];
+    return [...Object.entries(breeds).map((x) => x[0])];
   };
 
-  const onSelectChange = (evt) => {
-    const value = evt.target.value;
+  const onSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
     if (breeds[value].length > 0) {
-      setSubBreeds(["Select", ...breeds[value]]);
+      setSubBreeds([...breeds[value]]);
       setShouldRenderSelect(true);
     } else {
       setSubBreeds([]);
@@ -22,30 +32,46 @@ export const BreedsSelect = ({ breeds, setBreedSelected }: any) => {
     setMainBreed(value);
   };
 
-  const onSubSelectChange = (evt) => {
-    console.log("evt:::", evt);
-    const value = evt.target.value;
+  const onSubSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
     setBreedSelected(`${mainBreed}/${value}`);
   };
 
   return (
-    <div>
-      <select id="" name="" onChange={onSelectChange}>
-        {getOptions().map((x) => (
-          <option value={x} key={x}>
-            {x}
+    <div className="w-full py-4 flex justify-center gap-2 text-lg">
+      <select
+        onChange={onSelectChange}
+        className="select-breeds"
+        defaultValue=""
+      >
+        <option value="" disabled>
+          Raza
+        </option>
+        {getOptions().map((breed) => (
+          <option value={breed} key={breed}>
+            {breed}
           </option>
         ))}
       </select>
-      {shouldRenderSelect && (
-        <select id="" name="" onChange={onSubSelectChange}>
-          {subBreeds.map((x) => (
-            <option value={x} key={x}>
-              {x}
-            </option>
-          ))}
-        </select>
-      )}
+
+      <select
+        onChange={onSubSelectChange}
+        disabled={!shouldRenderSelect}
+        className={`select-breeds ${
+          !shouldRenderSelect ? "cursor-not-allowed" : "cursor-pointer"
+        }`}
+        defaultValue=""
+      >
+        <option value="" disabled>
+          Variantes
+        </option>
+
+        {subBreeds.map((breed) => (
+          <option value={breed} key={breed}>
+            {breed}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };

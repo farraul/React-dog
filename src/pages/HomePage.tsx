@@ -28,9 +28,17 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <div>
-      <BreedsSelect breeds={breeds} setBreedSelected={setBreedSelected} />
-      <ImageGallery images={images} />
-    </div>
+    <article>
+      <section className="px-4 sm:px-20">
+        <BreedsSelect breeds={breeds} setBreedSelected={setBreedSelected} />
+        {images.length ? (
+          <ImageGallery images={images} />
+        ) : (
+          <p className="text-center text-white text-2xl mt-36">
+            Selecciona una raza
+          </p>
+        )}
+      </section>
+    </article>
   );
 };
