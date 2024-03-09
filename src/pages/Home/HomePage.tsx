@@ -3,13 +3,13 @@ import breedsService from "src/services/breeds";
 import ImageGallery from "./components/ImageGallery";
 import { BreedsSelect } from "./components";
 import useSubmit from "src/hooks/useSubmit";
-import { DogBreeds } from "src/models/breed";
 import { Spinner } from "src/components";
 
 const HomePage = () => {
   const [breedSelected, setBreedSelected] = useState<string>("");
-  const [images, setImages] = useState<DogBreeds[]>([]);
-  const { handleSubmit, isLoading, error } = useSubmit<string, DogBreeds[]>();
+  const [images, setImages] = useState<string[]>([]);
+
+  const { handleSubmit, isLoading, error } = useSubmit<string, string[]>();
   const { getBreedImages } = breedsService();
 
   const getImages = async () => {

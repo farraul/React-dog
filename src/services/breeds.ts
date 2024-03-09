@@ -4,7 +4,7 @@ import { DogBreeds } from "src/models/breed";
 import { adapterError } from "src/utils/adapterError";
 
 const breedsService = () => {
-  const getNameBreeds = async () => {
+  const getNameBreeds = async (): Promise<DogBreeds> => {
     try {
       const { data } = await axios.get(`${API_URL_DOGS}/breeds/list/all`);
       return data.message;
@@ -15,7 +15,7 @@ const breedsService = () => {
     }
   };
 
-  const getBreedImages = async (breed: string): Promise<DogBreeds[]> => {
+  const getBreedImages = async (breed: string): Promise<string[]> => {
     try {
       const { data } = await axios.get(`${API_URL_DOGS}/breed/${breed}/images`);
       return data.message;

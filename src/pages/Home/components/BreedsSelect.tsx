@@ -13,8 +13,8 @@ const BreedsSelect = ({ setBreedSelected }: Props) => {
   const [subBreeds, setSubBreeds] = useState([""]);
   const [shouldRenderSelect, setShouldRenderSelect] = useState(false);
   const [mainBreed, setMainBreed] = useState("");
-  const { getNameBreeds } = breedsService();
 
+  const { getNameBreeds } = breedsService();
   const { handleSubmit, isLoading, error } = useSubmit<undefined, DogBreeds>();
 
   const getdata = async () => {
