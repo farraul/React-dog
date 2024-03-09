@@ -1,8 +1,11 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { Spinner } from "src/components";
 import { Layout } from "src/layout/Layout";
-import { HomePage } from "src/pages/HomePage";
+
+const HomePage = lazy(() => import("src/pages/Home/HomePage"));
+const ErrorPage = lazy(() => import("src/pages/Error/ErrorPage"));
+
 export const routesConfig = createBrowserRouter([
   {
     path: "/",
@@ -15,6 +18,10 @@ export const routesConfig = createBrowserRouter([
             <HomePage />
           </Suspense>
         ),
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },

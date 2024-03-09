@@ -15,8 +15,8 @@ const HomePage = () => {
   const getImages = async () => {
     if (breedSelected) {
       const imageDogs = await handleSubmit({
-        data: breedSelected,
         callback: getBreedImages,
+        param: breedSelected,
       });
       if (error) return;
       if (imageDogs) setImages(imageDogs);
@@ -31,19 +31,7 @@ const HomePage = () => {
     <article className="min-h-screen">
       <section className="px-4 sm:px-20">
         <BreedsSelect setBreedSelected={setBreedSelected} />
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <>
-            {images.length ? (
-              <ImageGallery images={images} />
-            ) : (
-              <p className="text-center text-gray-300 text-2xl mt-36">
-                No hay raza seleccionada
-              </p>
-            )}
-          </>
-        )}
+        {isLoading ? <Spinner /> : <ImageGallery images={images} />}
       </section>
     </article>
   );

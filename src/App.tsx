@@ -11,7 +11,7 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <ToastContainer />
-        <RouterProvider />;
+        <RouterProvider />
       </QueryClientProvider>
     </>
   );
