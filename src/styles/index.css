@@ -1,0 +1,15 @@
+@tailwind base;
+@layer base{
+  section{
+    @apply container mx-auto flex-grow
+  }
+}
+
+@tailwind components;
+
+@layer components{
+    .select-breeds{
+      @apply rounded-lg capitalize px-2 py-2;
+    }
+}
+@tailwind utilities;
