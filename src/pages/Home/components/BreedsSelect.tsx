@@ -1,22 +1,43 @@
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import useSubmit from "src/hooks/useSubmit";
+import { DogBreeds } from "src/models/breed";
+import breedsService from "src/services/breeds";
 
-interface DogBreeds {
-  [breed: string]: string[];
-}
 interface Props {
-  breeds: DogBreeds;
   setBreedSelected: (Breed: string) => void;
 }
 
-export const BreedsSelect = ({ breeds, setBreedSelected }: Props) => {
-  console.log("breeds:::", breeds);
-
+const BreedsSelect = ({ setBreedSelected }: Props) => {
+  const [breeds, setBreeds] = useState({});
   const [subBreeds, setSubBreeds] = useState([""]);
   const [shouldRenderSelect, setShouldRenderSelect] = useState(false);
   const [mainBreed, setMainBreed] = useState("");
+  const { getNameBreeds } = breedsService();
+
+  const { handleSubmit, isLoading, error } = useSubmit<
+    undefined,
+    DogBreeds[]
+  >();
+
+  const getdata = async () => {
+    const nameDogs = await handleSubmit({
+      data: undefined,
+      callback: getNameBreeds,
+    });
+    if (error) return;
+    if (nameDogs) setBreeds(nameDogs);
+  };
+
+  useQuery({
+    queryKey: ["SelectData"],
+    queryFn: async () => await getdata(),
+    staleTime: 1000 * 60,
+    gcTime: 1000 * 60,
+  });
 
   const getOptions = () => {
-    return [...Object.entries(breeds).map((x) => x[0])];
+    if (breeds) return [...Object.entries(breeds).map((x) => x[0])];
   };
 
   const onSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -43,6 +64,7 @@ export const BreedsSelect = ({ breeds, setBreedSelected }: Props) => {
         onChange={onSelectChange}
         className="select-breeds"
         defaultValue=""
+        disabled={isLoading}
       >
         <option value="" disabled>
           Raza
@@ -75,3 +97,5 @@ export const BreedsSelect = ({ breeds, setBreedSelected }: Props) => {
     </div>
   );
 };
+
+export default BreedsSelect;
