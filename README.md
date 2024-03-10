@@ -12,6 +12,8 @@ Reactdog is an application that allows you to see different breeds and subbreeds
 - React-toastify
 - Tailwindcss
 - Eslint
+- Node: v20.11.0
+- Yarn: 1.22.21
 
 ### Run project
 
