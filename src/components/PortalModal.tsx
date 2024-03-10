@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { typeModalOpen } from "src/models/modals";
+import { typeModalOpen } from "src/models";
 
 createPortal;
 
@@ -40,7 +40,7 @@ const PortalModal = ({
             <button
               type="button"
               onClick={close}
-              className="w-8 h-8 p-2 flex justify-center items-center bg-white rounded-sm right-10 top-10  text-2xl absolute cursor-pointer gap-4 z-[105] text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900  ml-auto dark:hover:bg-gray-600 dark:hover:text-white"
+              className="w-8 h-8 p-2 flex justify-center items-center bg-white rounded-sm right-10 top-10  text-2xl absolute cursor-pointer gap-4 z-[105] text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 ml-auto dark:hover:bg-gray-600 dark:hover:text-white"
             >
               X
             </button>

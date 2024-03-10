@@ -1,1 +1,1 @@
-export { default as breeds } from "./breeds";
+export { default as breedsService } from "./breedsService";

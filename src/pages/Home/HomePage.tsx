@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import breedsService from "src/services/breeds";
-import ImageGallery from "./components/ImageGallery";
-import { BreedsSelect } from "./components";
-import useSubmit from "src/hooks/useSubmit";
+import { BreedsSelect, ImageGallery } from "./components";
 import { Spinner } from "src/components";
+import { useSubmit } from "src/hooks";
+import breedsService from "src/services/breedsService";
 
 const HomePage = () => {
   const [breedSelected, setBreedSelected] = useState<string>("");
