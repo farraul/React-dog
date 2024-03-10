@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { API_URL_DOGS } from "src/constants/API";
-import { DogBreeds } from "src/models/breed";
-import { adapterError } from "src/utils/adapterError";
+import { DogBreeds } from "src/models";
+import { adapterError } from "src/utils";
 
 const breedsService = () => {
   const getNameBreeds = async (): Promise<DogBreeds> => {

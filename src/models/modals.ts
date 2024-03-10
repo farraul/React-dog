@@ -1,1 +1,1 @@
-export type typeModalOpen = "close" | "openImage";
+export type typeModalOpen = "openImage" | "close";

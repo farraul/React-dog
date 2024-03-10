@@ -3,7 +3,7 @@ function Spinner({ absolute = true }) {
     <div
       className={`w-full h-full ${
         absolute ? "absolute" : ""
-      } top-0 right-0 bg-white flex justify-center  items-center z-[99]`}
+      } top-0 right-0 bg-white flex justify-center items-center z-[99]`}
     >
       <div role="status">
         <svg
