@@ -1,5 +1,5 @@
 import { useState } from "react";
-import LazyImage from "src/components/LazyImage";
+import LazyImage from "src/pages/Home/components/LazyImage";
 import PortalModal from "src/components/PortalModal";
 import { useModal } from "src/hooks/useModal";
 
@@ -21,8 +21,8 @@ const ImageGallery = ({ images }: Props) => {
       {images.length ? (
         <div className="image-container grid sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-5 sm:mt-20">
           {images.map((image, index) => (
-            <div onClick={() => showModal(image)}>
-              <LazyImage key={index} src={image as unknown as string} />
+            <div onClick={() => showModal(image)} key={index}>
+              <LazyImage src={image as unknown as string} />
             </div>
           ))}
         </div>
@@ -39,7 +39,6 @@ const ImageGallery = ({ images }: Props) => {
       >
         <img src={currentImage} alt={currentImage} className="w-full" />
       </PortalModal>
-      ;
     </>
   );
 };

@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import useSubmit from "src/hooks/useSubmit";
-import { DogBreeds } from "src/models/breed";
-import breedsService from "src/services/breeds";
+import { DogBreeds } from "src/models";
+import { breedsService } from "src/services";
 
 interface Props {
   setBreedSelected: (Breed: string) => void;
